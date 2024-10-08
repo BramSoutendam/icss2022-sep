@@ -26,10 +26,45 @@ public class ASTListener extends ICSSBaseListener {
 
 	public ASTListener() {
 		ast = new AST();
-		//currentContainer = new HANStack<>();
+		currentContainer = new HANStack<>();
 	}
     public AST getAST() {
         return ast;
     }
-    
+
+    @Override
+    public void enterStylesheet(ICSSParser.StylesheetContext ctx){
+        Stylesheet stylesheet = new Stylesheet;
+        currentContainer.push(stylesheet)
+    }
+
+    @Override
+    public void exitStylesheet(ICSSParser.StylesheetContext ctx){
+        Stylesheet sheet = (Stylesheet) currentContainer.pop();
+        ast.root = sheet;
+    }
+
+    @Override
+    public void enterStylerule(ICSSParser.StyleruleContext ctx){
+        Stylerule rule = new Stylerule();
+        currentContainer.push(rule);
+    }
+
+    @Override
+    public void exitStylerule(ICSSParser.StyleruleContext ctx){
+        Stylerule rule = (Stylerule) currentContainer.pop();
+        currentContainer.peek().addChild(rule);
+    }
+
+    @Override
+    public void enterTagSelector(ICSSParser.TagSelectorContext cts){
+        TagSelector selector = new TagSelector("TAG");
+        currentContainer.push(selector);
+    }
+
+    @Override
+    public void exitenterTagSelector(ICSSParser.TagSelectorContext cts){
+        TagSelector tag = (TagSelector) currentContainer.pop();
+        currentContainer.peek().addChild(tag);
+    }
 }
