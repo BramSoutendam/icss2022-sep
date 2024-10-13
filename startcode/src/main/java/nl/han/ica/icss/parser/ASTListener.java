@@ -34,7 +34,7 @@ public class ASTListener extends ICSSBaseListener {
 
     @Override
     public void enterStylesheet(ICSSParser.StylesheetContext ctx){
-        Stylesheet stylesheet = new Stylesheet;
+        Stylesheet stylesheet = new Stylesheet();
         currentContainer.push(stylesheet)
     }
 
