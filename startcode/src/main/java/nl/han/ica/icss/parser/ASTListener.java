@@ -12,6 +12,15 @@ import nl.han.ica.icss.ast.operations.SubtractOperation;
 import nl.han.ica.icss.ast.selectors.ClassSelector;
 import nl.han.ica.icss.ast.selectors.IdSelector;
 import nl.han.ica.icss.ast.selectors.TagSelector;
+import nl.han.ica.datastructures.HANStack;
+//temp import fix
+//import nl.han.ica.icss.ast.Stylesheet;
+//import nl.han.ica.icss.parser.ICSSBaseListener;
+//import nl.han.ica.icss.ast.AST;
+//import nl.han.ica.icss.ast.ASTNode;
+//import nl.han.ica.icss.parser.ICSSParser;
+//import nl.han.ica.icss.ast.Stylerule;
+
 
 /**
  * This class extracts the ICSS Abstract Syntax Tree from the Antlr Parse tree.
@@ -35,7 +44,7 @@ public class ASTListener extends ICSSBaseListener {
     @Override
     public void enterStylesheet(ICSSParser.StylesheetContext ctx){
         Stylesheet stylesheet = new Stylesheet();
-        currentContainer.push(stylesheet)
+        currentContainer.push(stylesheet);
     }
 
     @Override
@@ -56,15 +65,40 @@ public class ASTListener extends ICSSBaseListener {
         currentContainer.peek().addChild(rule);
     }
 
+
     @Override
-    public void enterTagSelector(ICSSParser.TagSelectorContext cts){
+    public void enterTagSelector(ICSSParser.TagSelectorContext ctx){
         TagSelector selector = new TagSelector("TAG");
         currentContainer.push(selector);
     }
 
     @Override
-    public void exitenterTagSelector(ICSSParser.TagSelectorContext cts){
-        TagSelector tag = (TagSelector) currentContainer.pop();
-        currentContainer.peek().addChild(tag);
+    public void exitTagSelector(ICSSParser.TagSelectorContext ctx){
+        TagSelector selector = (TagSelector) currentContainer.pop();
+        currentContainer.peek().addChild(selector);
+    }
+
+    @Override
+    public void enterIdSelector(ICSSParser.IdSelectorContext ctx){
+        IdSelector selector = new IdSelector("ID");
+        currentContainer.push(selector);
+    }
+
+    @Override
+    public void exitIdSelector(ICSSParser.IdSelectorContext ctx){
+        IdSelector selector = (IdSelector) currentContainer.pop();
+        currentContainer.peek().addChild(selector);
+    }
+
+    @Override
+    public void enterClassSelector(ICSSParser.ClassSelectorContext ctx){
+        ClassSelector selector = new ClassSelector("Class");
+        currentContainer.push(selector);
+    }
+
+    @Override
+    public void exitClassSelector(ICSSParser.ClassSelectorContext ctx){
+        ClassSelector selector = (ClassSelector) currentContainer.pop();
+        currentContainer.peek().addChild(selector);
     }
 }

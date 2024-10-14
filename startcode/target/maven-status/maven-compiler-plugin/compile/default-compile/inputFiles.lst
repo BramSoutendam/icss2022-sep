@@ -13,6 +13,7 @@ D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\ma
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\operations\AddOperation.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\transforms\Transform.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\IfClause.java
+D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\datastructures\HANLinkedList.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\datastructures\IHANLinkedList.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\selectors\ClassSelector.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\types\ExpressionType.java
@@ -23,6 +24,7 @@ D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\ma
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\VariableAssignment.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\target\generated-sources\antlr4\nl\han\ica\icss\parser\ICSSParser.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\ElseClause.java
+D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\datastructures\HANStack.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\Literal.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\literals\PercentageLiteral.java
 D:\Programming\IntelliJprojects\APP\Beroepsproduct\icss2022-sep\startcode\src\main\java\nl\han\ica\icss\ast\VariableReference.java

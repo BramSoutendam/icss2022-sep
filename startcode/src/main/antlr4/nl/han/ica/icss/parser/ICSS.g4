@@ -46,9 +46,12 @@ ASSIGNMENT_OPERATOR: ':=';
 
 //--- PARSER: ---
 //level 0
+//you can add labes with #, and then it can autogenerate listener for different options of rules
 stylesheet: stylerule+ EOF;
-stylerule: selector OPEN_BRACE declarations* CLOSE_BRACE;
-selector: ID_IDENT | CLASS_IDENT | LOWER_IDENT;
+stylerule: (tagSelector | idSelector | classSelector) OPEN_BRACE declarations* CLOSE_BRACE;
+tagSelector: LOWER_IDENT;
+idSelector:ID_IDENT;
+classSelector:CLASS_IDENT;
 declarations: property COLON value SEMICOLON;
 property: CAPITAL_IDENT | LOWER_IDENT;
 value: TRUE | FALSE | PIXELSIZE | PERCENTAGE | SCALAR | COLOR;

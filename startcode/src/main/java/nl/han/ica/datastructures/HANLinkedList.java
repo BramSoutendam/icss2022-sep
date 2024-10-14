@@ -1,3 +1,5 @@
+package nl.han.ica.datastructures;
+
 import java.util.Iterator;
 
 public class HANLinkedList<genericType> implements nl.han.ica.datastructures.IHANLinkedList<genericType> {
@@ -80,12 +82,6 @@ public class HANLinkedList<genericType> implements nl.han.ica.datastructures.IHA
     public int getSize() {
         return size;
     }
-
-    @Override
-    public Iterator iterator() {
-        return null;
-    }
-
 
     private static class ListNode<genericType> {
         private genericType innards;

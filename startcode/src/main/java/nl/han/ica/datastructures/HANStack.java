@@ -1,20 +1,23 @@
-public class HANStack <genericType> implements nl.han.ica.datastructures.IHANStack {
-    HANLinkedList stackContent;
+package nl.han.ica.datastructures;
 
+public class HANStack <genericType> implements nl.han.ica.datastructures.IHANStack<genericType> {
+    HANLinkedList<genericType> stackContent;
+
+    public HANStack(){ stackContent = new HANLinkedList<>();}
     @Override
-    public void push(Object value) {
+    public void push(genericType value) {
         stackContent.addFirst(value);
     }
 
     @Override
-    public Object pop() {
-        Object topValue = stackContent.getFirst();
+    public genericType pop() {
+        genericType topValue = stackContent.getFirst();
         stackContent.removeFirst();
         return topValue;
     }
 
     @Override
-    public Object peek() {
+    public genericType peek() {
         return stackContent.getFirst();
     }
 }
