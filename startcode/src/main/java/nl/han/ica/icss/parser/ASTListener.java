@@ -68,7 +68,7 @@ public class ASTListener extends ICSSBaseListener {
 
     @Override
     public void enterTagSelector(ICSSParser.TagSelectorContext ctx){
-        TagSelector selector = new TagSelector("TAG");
+        TagSelector selector = new TagSelector(ctx.getText());
         currentContainer.push(selector);
     }
 
@@ -80,7 +80,7 @@ public class ASTListener extends ICSSBaseListener {
 
     @Override
     public void enterIdSelector(ICSSParser.IdSelectorContext ctx){
-        IdSelector selector = new IdSelector("ID");
+        IdSelector selector = new IdSelector(ctx.getText());
         currentContainer.push(selector);
     }
 
@@ -92,7 +92,7 @@ public class ASTListener extends ICSSBaseListener {
 
     @Override
     public void enterClassSelector(ICSSParser.ClassSelectorContext ctx){
-        ClassSelector selector = new ClassSelector("Class");
+        ClassSelector selector = new ClassSelector(ctx.getText());
         currentContainer.push(selector);
     }
 
@@ -100,5 +100,41 @@ public class ASTListener extends ICSSBaseListener {
     public void exitClassSelector(ICSSParser.ClassSelectorContext ctx){
         ClassSelector selector = (ClassSelector) currentContainer.pop();
         currentContainer.peek().addChild(selector);
+    }
+
+    @Override
+    public void enterDeclarations(ICSSParser.DeclarationsContext ctx){
+        Declaration declaration = new Declaration(ctx.getText());
+        currentContainer.push(declaration);
+    }
+
+    @Override
+    public void exitDeclarations(ICSSParser.DeclarationsContext ctx){
+        Declaration declaration = (Declaration) currentContainer.pop();
+        currentContainer.peek().addChild(declaration);
+    }
+
+    @Override
+    public void enterProperty(ICSSParser.PropertyContext ctx) {
+        PropertyName property = new PropertyName(ctx.getText());
+        currentContainer.push(property);
+    }
+
+    @Override
+    public void exitProperty(ICSSParser.PropertyContext ctx) {
+        PropertyName property = (PropertyName) currentContainer.pop();
+        currentContainer.peek().addChild(property);
+    }
+
+    @Override
+    public void enterValue(ICSSParser.ValueContext ctx) {
+        VariableReference var = new VariableReference(ctx.getText());
+        currentContainer.push(var);
+    }
+
+    @Override
+    public void exitValue(ICSSParser.ValueContext ctx) {
+        VariableReference var = (VariableReference) currentContainer.pop();
+        currentContainer.peek().addChild(var);
     }
 }
