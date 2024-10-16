@@ -126,15 +126,55 @@ public class ASTListener extends ICSSBaseListener {
         currentContainer.peek().addChild(property);
     }
 
-    @Override
-    public void enterValue(ICSSParser.ValueContext ctx) {
-        VariableReference var = new VariableReference(ctx.getText());
-        currentContainer.push(var);
+
+    @Override public void enterBoolLiteral(ICSSParser.BoolLiteralContext ctx) {
+        BoolLiteral bool = new BoolLiteral(ctx.getText());
+        currentContainer.push(bool);
     }
 
-    @Override
-    public void exitValue(ICSSParser.ValueContext ctx) {
-        VariableReference var = (VariableReference) currentContainer.pop();
-        currentContainer.peek().addChild(var);
+    @Override public void exitBoolLiteral(ICSSParser.BoolLiteralContext ctx) {
+        BoolLiteral bool = (BoolLiteral) currentContainer.pop();
+        currentContainer.peek().addChild(bool);
     }
+
+    @Override public void enterPixelLiteral(ICSSParser.PixelLiteralContext ctx) {
+        PixelLiteral pixelLiteral = new PixelLiteral(ctx.getText());
+        currentContainer.push(pixelLiteral);
+    }
+
+    @Override public void exitPixelLiteral(ICSSParser.PixelLiteralContext ctx) {
+        PixelLiteral pixelLiteral = (PixelLiteral) currentContainer.pop();
+        currentContainer.peek().addChild(pixelLiteral);
+    }
+
+    @Override public void enterPercentageLiteral(ICSSParser.PercentageLiteralContext ctx) {
+        PercentageLiteral percentageLiteral = new PercentageLiteral(ctx.getText());
+        currentContainer.push(percentageLiteral);
+    }
+
+    @Override public void exitPercentageLiteral(ICSSParser.PercentageLiteralContext ctx) {
+        PercentageLiteral percentageLiteral = (PercentageLiteral) currentContainer.pop();
+        currentContainer.peek().addChild(percentageLiteral);
+    }
+
+    @Override public void enterScalarLiteral(ICSSParser.ScalarLiteralContext ctx) {
+        ScalarLiteral scalarLiteral = new ScalarLiteral(ctx.getText());
+        currentContainer.push(scalarLiteral);
+    }
+
+    @Override public void exitScalarLiteral(ICSSParser.ScalarLiteralContext ctx) {
+        ScalarLiteral scalarLiteral = (ScalarLiteral) currentContainer.pop();
+        currentContainer.peek().addChild(scalarLiteral);
+    }
+
+    @Override public void enterColorLiteral(ICSSParser.ColorLiteralContext ctx) {
+        ColorLiteral colorLiteral = new ColorLiteral(ctx.getText());
+        currentContainer.push(colorLiteral);
+    }
+
+    @Override public void exitColorLiteral(ICSSParser.ColorLiteralContext ctx) {
+        ColorLiteral colorLiteral = (ColorLiteral) currentContainer.pop();
+        currentContainer.peek().addChild(colorLiteral);
+    }
+
 }

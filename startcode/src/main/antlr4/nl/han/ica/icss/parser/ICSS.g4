@@ -54,4 +54,4 @@ idSelector:ID_IDENT;
 classSelector:CLASS_IDENT;
 declarations: property COLON value SEMICOLON;
 property: CAPITAL_IDENT | LOWER_IDENT;
-value: TRUE | FALSE | PIXELSIZE | PERCENTAGE | SCALAR | COLOR;
+value: TRUE #boolLiteral | FALSE #boolLiteral | PIXELSIZE #pixelLiteral | PERCENTAGE #percentageLiteral | SCALAR #scalarLiteral | COLOR #colorLiteral;

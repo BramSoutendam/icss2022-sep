@@ -2,9 +2,12 @@ package nl.han.ica.icss.checker;
 
 import nl.han.ica.datastructures.IHANLinkedList;
 import nl.han.ica.icss.ast.*;
+import nl.han.ica.icss.ast.literals.ColorLiteral;
+import nl.han.ica.icss.ast.literals.PercentageLiteral;
 import nl.han.ica.icss.ast.literals.PixelLiteral;
 import nl.han.ica.icss.ast.types.ExpressionType;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 
@@ -33,8 +36,12 @@ public class Checker {
 
     private void checkDeclaration(Declaration node){
         if(node.property.name.equals("width")){
-            if(!(node.expression instanceof PixelLiteral)){
+            if(!(node.expression instanceof PixelLiteral | node.expression instanceof PercentageLiteral)){
                 node.setError("Property: \"Width\" has been assigned an invalid type");
+            }
+        }else if(node.property.name.contains("color")){
+            if(!(node.expression instanceof ColorLiteral)){
+                node.setError("Property: \"" + node.property.name + "\" has been assigen an invalid type");
             }
         }
     }

@@ -460,43 +460,135 @@ public class ICSSParser extends Parser {
 	}
 
 	public static class ValueContext extends ParserRuleContext {
-		public TerminalNode TRUE() { return getToken(ICSSParser.TRUE, 0); }
-		public TerminalNode FALSE() { return getToken(ICSSParser.FALSE, 0); }
-		public TerminalNode PIXELSIZE() { return getToken(ICSSParser.PIXELSIZE, 0); }
-		public TerminalNode PERCENTAGE() { return getToken(ICSSParser.PERCENTAGE, 0); }
-		public TerminalNode SCALAR() { return getToken(ICSSParser.SCALAR, 0); }
-		public TerminalNode COLOR() { return getToken(ICSSParser.COLOR, 0); }
 		public ValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_value; }
+	 
+		public ValueContext() { }
+		public void copyFrom(ValueContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class PixelLiteralContext extends ValueContext {
+		public TerminalNode PIXELSIZE() { return getToken(ICSSParser.PIXELSIZE, 0); }
+		public PixelLiteralContext(ValueContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).enterValue(this);
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).enterPixelLiteral(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).exitValue(this);
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).exitPixelLiteral(this);
+		}
+	}
+	public static class ScalarLiteralContext extends ValueContext {
+		public TerminalNode SCALAR() { return getToken(ICSSParser.SCALAR, 0); }
+		public ScalarLiteralContext(ValueContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).enterScalarLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).exitScalarLiteral(this);
+		}
+	}
+	public static class BoolLiteralContext extends ValueContext {
+		public TerminalNode TRUE() { return getToken(ICSSParser.TRUE, 0); }
+		public TerminalNode FALSE() { return getToken(ICSSParser.FALSE, 0); }
+		public BoolLiteralContext(ValueContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).enterBoolLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).exitBoolLiteral(this);
+		}
+	}
+	public static class PercentageLiteralContext extends ValueContext {
+		public TerminalNode PERCENTAGE() { return getToken(ICSSParser.PERCENTAGE, 0); }
+		public PercentageLiteralContext(ValueContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).enterPercentageLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).exitPercentageLiteral(this);
+		}
+	}
+	public static class ColorLiteralContext extends ValueContext {
+		public TerminalNode COLOR() { return getToken(ICSSParser.COLOR, 0); }
+		public ColorLiteralContext(ValueContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).enterColorLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ICSSListener ) ((ICSSListener)listener).exitColorLiteral(this);
 		}
 	}
 
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_value);
-		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(50);
-			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TRUE) | (1L << FALSE) | (1L << PIXELSIZE) | (1L << PERCENTAGE) | (1L << SCALAR) | (1L << COLOR))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			else {
-				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-				_errHandler.reportMatch(this);
-				consume();
-			}
+			setState(56);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case TRUE:
+				_localctx = new BoolLiteralContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(50);
+				match(TRUE);
+				}
+				break;
+			case FALSE:
+				_localctx = new BoolLiteralContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(51);
+				match(FALSE);
+				}
+				break;
+			case PIXELSIZE:
+				_localctx = new PixelLiteralContext(_localctx);
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(52);
+				match(PIXELSIZE);
+				}
+				break;
+			case PERCENTAGE:
+				_localctx = new PercentageLiteralContext(_localctx);
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(53);
+				match(PERCENTAGE);
+				}
+				break;
+			case SCALAR:
+				_localctx = new ScalarLiteralContext(_localctx);
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(54);
+				match(SCALAR);
+				}
+				break;
+			case COLOR:
+				_localctx = new ColorLiteralContext(_localctx);
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(55);
+				match(COLOR);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -511,20 +603,22 @@ public class ICSSParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\31\67\4\2\t\2\4\3"+
-		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\6\2\24\n\2\r"+
-		"\2\16\2\25\3\2\3\2\3\3\3\3\3\3\5\3\35\n\3\3\3\3\3\7\3!\n\3\f\3\16\3$\13"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\31=\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\6\2\24\n\2\r\2"+
+		"\16\2\25\3\2\3\2\3\3\3\3\3\3\5\3\35\n\3\3\3\3\3\7\3!\n\3\f\3\16\3$\13"+
 		"\3\3\3\3\3\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3\t\3\t"+
-		"\3\t\2\2\n\2\4\6\b\n\f\16\20\2\4\3\2\17\20\3\2\7\f\2\62\2\23\3\2\2\2\4"+
-		"\34\3\2\2\2\6\'\3\2\2\2\b)\3\2\2\2\n+\3\2\2\2\f-\3\2\2\2\16\62\3\2\2\2"+
-		"\20\64\3\2\2\2\22\24\5\4\3\2\23\22\3\2\2\2\24\25\3\2\2\2\25\23\3\2\2\2"+
-		"\25\26\3\2\2\2\26\27\3\2\2\2\27\30\7\2\2\3\30\3\3\2\2\2\31\35\5\6\4\2"+
-		"\32\35\5\b\5\2\33\35\5\n\6\2\34\31\3\2\2\2\34\32\3\2\2\2\34\33\3\2\2\2"+
-		"\35\36\3\2\2\2\36\"\7\22\2\2\37!\5\f\7\2 \37\3\2\2\2!$\3\2\2\2\" \3\2"+
-		"\2\2\"#\3\2\2\2#%\3\2\2\2$\"\3\2\2\2%&\7\23\2\2&\5\3\2\2\2\'(\7\17\2\2"+
-		"(\7\3\2\2\2)*\7\r\2\2*\t\3\2\2\2+,\7\16\2\2,\13\3\2\2\2-.\5\16\b\2./\7"+
-		"\25\2\2/\60\5\20\t\2\60\61\7\24\2\2\61\r\3\2\2\2\62\63\t\2\2\2\63\17\3"+
-		"\2\2\2\64\65\t\3\2\2\65\21\3\2\2\2\5\25\34\"";
+		"\3\t\3\t\3\t\3\t\5\t;\n\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\3\3\2\17\20\2"+
+		"=\2\23\3\2\2\2\4\34\3\2\2\2\6\'\3\2\2\2\b)\3\2\2\2\n+\3\2\2\2\f-\3\2\2"+
+		"\2\16\62\3\2\2\2\20:\3\2\2\2\22\24\5\4\3\2\23\22\3\2\2\2\24\25\3\2\2\2"+
+		"\25\23\3\2\2\2\25\26\3\2\2\2\26\27\3\2\2\2\27\30\7\2\2\3\30\3\3\2\2\2"+
+		"\31\35\5\6\4\2\32\35\5\b\5\2\33\35\5\n\6\2\34\31\3\2\2\2\34\32\3\2\2\2"+
+		"\34\33\3\2\2\2\35\36\3\2\2\2\36\"\7\22\2\2\37!\5\f\7\2 \37\3\2\2\2!$\3"+
+		"\2\2\2\" \3\2\2\2\"#\3\2\2\2#%\3\2\2\2$\"\3\2\2\2%&\7\23\2\2&\5\3\2\2"+
+		"\2\'(\7\17\2\2(\7\3\2\2\2)*\7\r\2\2*\t\3\2\2\2+,\7\16\2\2,\13\3\2\2\2"+
+		"-.\5\16\b\2./\7\25\2\2/\60\5\20\t\2\60\61\7\24\2\2\61\r\3\2\2\2\62\63"+
+		"\t\2\2\2\63\17\3\2\2\2\64;\7\7\2\2\65;\7\b\2\2\66;\7\t\2\2\67;\7\n\2\2"+
+		"8;\7\13\2\29;\7\f\2\2:\64\3\2\2\2:\65\3\2\2\2:\66\3\2\2\2:\67\3\2\2\2"+
+		":8\3\2\2\2:9\3\2\2\2;\21\3\2\2\2\6\25\34\":";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
