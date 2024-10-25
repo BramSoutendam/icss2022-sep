@@ -46,15 +46,16 @@ ASSIGNMENT_OPERATOR: ':=';
 
 //--- PARSER: ---
 //you can add labes with #, and then it can autogenerate listener for different options of rules
-stylesheet: stylerule+ EOF;
-stylerule: (tagSelector | idSelector | classSelector) OPEN_BRACE declarations* CLOSE_BRACE | variableAssignment;
+stylesheet: variableAssignment* stylerule* EOF;
+stylerule: (tagSelector | idSelector | classSelector) OPEN_BRACE declarations* CLOSE_BRACE;
+variableAssignment: variableReference ASSIGNMENT_OPERATOR value SEMICOLON;
 
 tagSelector: LOWER_IDENT;
 idSelector:ID_IDENT;
 classSelector:CLASS_IDENT;
 declarations: property COLON value SEMICOLON;
 property: CAPITAL_IDENT | LOWER_IDENT;
-variableAssignment: variableReference ASSIGNMENT_OPERATOR value SEMICOLON;
+
 value: TRUE #boolLiteral | FALSE #boolLiteral | PIXELSIZE #pixelLiteral
     | PERCENTAGE #percentageLiteral | SCALAR #scalarLiteral
     | COLOR #colorLiteral | variableReference #varParameter;

@@ -28,6 +28,16 @@ public interface ICSSListener extends ParseTreeListener {
 	 */
 	void exitStylerule(ICSSParser.StyleruleContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ICSSParser#variableAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableAssignment(ICSSParser.VariableAssignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ICSSParser#variableAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableAssignment(ICSSParser.VariableAssignmentContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ICSSParser#tagSelector}.
 	 * @param ctx the parse tree
 	 */
@@ -77,16 +87,6 @@ public interface ICSSListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitProperty(ICSSParser.PropertyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ICSSParser#variableAssignment}.
-	 * @param ctx the parse tree
-	 */
-	void enterVariableAssignment(ICSSParser.VariableAssignmentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ICSSParser#variableAssignment}.
-	 * @param ctx the parse tree
-	 */
-	void exitVariableAssignment(ICSSParser.VariableAssignmentContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code boolLiteral}
 	 * labeled alternative in {@link ICSSParser#value}.

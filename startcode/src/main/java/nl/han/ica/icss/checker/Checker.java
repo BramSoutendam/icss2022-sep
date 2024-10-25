@@ -9,12 +9,14 @@ import nl.han.ica.icss.ast.types.ExpressionType;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Arrays;
 
 
 
 public class Checker {
 
     private IHANLinkedList<HashMap<String, ExpressionType>> variableTypes;
+    private final String[] validProperties = {"width", "color", "background-color"};
 
     public void check(AST ast) {
         // variableTypes = new HANLinkedList<>();
@@ -35,13 +37,18 @@ public class Checker {
     }
 
     private void checkDeclaration(Declaration node){
+        //checks if the property is even valid
+        if(!Arrays.stream(validProperties).anyMatch(node.property.name::equals)){
+            node.setError("Property: \"" + node.property.name + "\" was given an invalid name" );
+        }
+        //performs type-specific checks
         if(node.property.name.equals("width")){
             if(!(node.expression instanceof PixelLiteral | node.expression instanceof PercentageLiteral)){
                 node.setError("Property: \"Width\" has been assigned an invalid type");
             }
         }else if(node.property.name.contains("color")){
             if(!(node.expression instanceof ColorLiteral)){
-                node.setError("Property: \"" + node.property.name + "\" has been assigen an invalid type");
+                node.setError("Property: \"" + node.property.name + "\" has been assigned an invalid type");
             }
         }
     }
