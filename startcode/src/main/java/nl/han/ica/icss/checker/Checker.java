@@ -24,13 +24,14 @@ public class Checker {
     }
 
     private void checkStylesheet(Stylesheet node) {
-        //de reden dat het nu node 0 is omdat het voorbeeld maar 1 kan hebben
         checkStylerule((Stylerule) node.getChildren().get(0));
     }
 
     private void checkStylerule(Stylerule node){
         for( ASTNode child : node.getChildren()){
-            if(child instanceof Declaration){
+            if(child instanceof VariableAssignment){
+
+            }else if(child instanceof Declaration){
                 checkDeclaration((Declaration) child);
             }
         }
@@ -40,15 +41,16 @@ public class Checker {
         //checks if the property is even valid
         if(!Arrays.stream(validProperties).anyMatch(node.property.name::equals)){
             node.setError("Property: \"" + node.property.name + "\" was given an invalid name" );
-        }
-        //performs type-specific checks
-        if(node.property.name.equals("width")){
-            if(!(node.expression instanceof PixelLiteral | node.expression instanceof PercentageLiteral)){
-                node.setError("Property: \"Width\" has been assigned an invalid type");
-            }
-        }else if(node.property.name.contains("color")){
-            if(!(node.expression instanceof ColorLiteral)){
-                node.setError("Property: \"" + node.property.name + "\" has been assigned an invalid type");
+        }else {
+            //performs type-specific checks
+            if (node.property.name.equals("width")) {
+                if (!(node.expression instanceof PixelLiteral | node.expression instanceof PercentageLiteral)) {
+                    node.setError("Property: \"Width\" has been assigned an invalid type");
+                }
+            } else if (node.property.name.contains("color")) {
+                if (!(node.expression instanceof ColorLiteral)) {
+                    node.setError("Property: \"" + node.property.name + "\" has been assigned an invalid type");
+                }
             }
         }
     }
