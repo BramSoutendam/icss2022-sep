@@ -177,4 +177,25 @@ public class ASTListener extends ICSSBaseListener {
         currentContainer.peek().addChild(colorLiteral);
     }
 
+    //added for 1
+    @Override public void enterVariableAssignment(ICSSParser.VariableAssignmentContext ctx){
+        VariableAssignment variableAssignment = new VariableAssignment();
+        currentContainer.push(variableAssignment);
+    }
+
+    @Override public void exitVariableAssignment(ICSSParser.VariableAssignmentContext ctx){
+        VariableAssignment variableAssignment = (VariableAssignment) currentContainer.pop();
+        currentContainer.peek().addChild(variableAssignment);
+    }
+
+    @Override public void enterVariableReference(ICSSParser.VariableReferenceContext ctx){
+        VariableReference variableReference = new VariableReference(ctx.getText());
+        currentContainer.push(variableReference);
+    }
+
+    @Override public void exitVariableReference(ICSSParser.VariableReferenceContext ctx){
+        VariableReference variableReference = (VariableReference) currentContainer.pop();
+        currentContainer.peek().addChild(variableReference);
+    }
+
 }

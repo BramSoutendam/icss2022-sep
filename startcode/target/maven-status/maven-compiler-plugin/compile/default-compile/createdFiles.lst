@@ -37,6 +37,7 @@ nl\han\ica\icss\gui\MainGui$5.class
 nl\han\ica\icss\gui\MainGui$1.class
 nl\han\ica\icss\checker\Checker.class
 nl\han\ica\icss\parser\ICSSParser$StyleruleContext.class
+nl\han\ica\icss\parser\ICSSParser$VarParameterContext.class
 nl\han\ica\icss\ast\literals\BoolLiteral.class
 nl\han\ica\icss\ast\literals\PercentageLiteral.class
 nl\han\ica\icss\parser\ICSSLexer.class
@@ -59,7 +60,9 @@ nl\han\ica\icss\transforms\Evaluator.class
 nl\han\ica\icss\gui\MainGui$7.class
 nl\han\ica\icss\gui\ASTPane$1.class
 nl\han\ica\icss\ast\IfClause.class
+nl\han\ica\icss\parser\ICSSParser$VariableReferenceContext.class
 nl\han\ica\icss\parser\ASTListener.class
+nl\han\ica\icss\parser\ICSSParser$VariableAssignmentContext.class
 nl\han\ica\datastructures\IHANQueue.class
 nl\han\ica\icss\ast\selectors\IdSelector.class
 nl\han\ica\icss\ast\operations\SubtractOperation.class
