@@ -198,4 +198,33 @@ public class ASTListener extends ICSSBaseListener {
         currentContainer.peek().addChild(variableReference);
     }
 
+    @Override public void enterAdd(ICSSParser.AddContext ctx){
+        AddOperation addOperation = new AddOperation();
+        currentContainer.push(addOperation);
+    }
+
+    @Override public void exitAdd(ICSSParser.AddContext ctx){
+        AddOperation addOperation = (AddOperation) currentContainer.pop();
+        currentContainer.peek().addChild(addOperation);
+    }
+
+    @Override public void enterSubtract(ICSSParser.SubtractContext ctx){
+        SubtractOperation subtractOperation = new SubtractOperation();
+        currentContainer.push(subtractOperation);
+    }
+
+    @Override public void exitSubtract(ICSSParser.SubtractContext ctx){
+        SubtractOperation subtractOperation = (SubtractOperation) currentContainer.pop();
+        currentContainer.peek().addChild(subtractOperation);
+    }
+
+    @Override public void enterMultiply(ICSSParser.MultiplyContext ctx){
+        MultiplyOperation multiplyOperation = new MultiplyOperation();
+        currentContainer.push(multiplyOperation);
+    }
+
+    @Override public void exitMultiply(ICSSParser.MultiplyContext ctx){
+        MultiplyOperation multiplyOperation = (MultiplyOperation) currentContainer.pop();
+        currentContainer.peek().addChild(multiplyOperation);
+    }
 }

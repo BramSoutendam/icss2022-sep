@@ -112,13 +112,13 @@ public class ICSSBaseListener implements ICSSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoolLiteral(ICSSParser.BoolLiteralContext ctx) { }
+	@Override public void enterAdd(ICSSParser.AddContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoolLiteral(ICSSParser.BoolLiteralContext ctx) { }
+	@Override public void exitAdd(ICSSParser.AddContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -136,13 +136,25 @@ public class ICSSBaseListener implements ICSSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPercentageLiteral(ICSSParser.PercentageLiteralContext ctx) { }
+	@Override public void enterMultiply(ICSSParser.MultiplyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPercentageLiteral(ICSSParser.PercentageLiteralContext ctx) { }
+	@Override public void exitMultiply(ICSSParser.MultiplyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSubtract(ICSSParser.SubtractContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSubtract(ICSSParser.SubtractContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -160,13 +172,13 @@ public class ICSSBaseListener implements ICSSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterColorLiteral(ICSSParser.ColorLiteralContext ctx) { }
+	@Override public void enterBoolLiteral(ICSSParser.BoolLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitColorLiteral(ICSSParser.ColorLiteralContext ctx) { }
+	@Override public void exitBoolLiteral(ICSSParser.BoolLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -179,6 +191,30 @@ public class ICSSBaseListener implements ICSSListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVarParameter(ICSSParser.VarParameterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPercentageLiteral(ICSSParser.PercentageLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPercentageLiteral(ICSSParser.PercentageLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterColorLiteral(ICSSParser.ColorLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColorLiteral(ICSSParser.ColorLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

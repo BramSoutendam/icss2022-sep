@@ -56,7 +56,8 @@ classSelector:CLASS_IDENT;
 declarations: property COLON value SEMICOLON;
 property: CAPITAL_IDENT | LOWER_IDENT;
 
-value: TRUE #boolLiteral | FALSE #boolLiteral | PIXELSIZE #pixelLiteral
+value: value MUL value #Multiply | value PLUS value #Add | value MIN value #Subtract
+    | TRUE #boolLiteral | FALSE #boolLiteral | PIXELSIZE #pixelLiteral
     | PERCENTAGE #percentageLiteral | SCALAR #scalarLiteral
     | COLOR #colorLiteral | variableReference #varParameter;
 

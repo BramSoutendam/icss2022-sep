@@ -88,17 +88,17 @@ public interface ICSSListener extends ParseTreeListener {
 	 */
 	void exitProperty(ICSSParser.PropertyContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code boolLiteral}
+	 * Enter a parse tree produced by the {@code Add}
 	 * labeled alternative in {@link ICSSParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterBoolLiteral(ICSSParser.BoolLiteralContext ctx);
+	void enterAdd(ICSSParser.AddContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code boolLiteral}
+	 * Exit a parse tree produced by the {@code Add}
 	 * labeled alternative in {@link ICSSParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitBoolLiteral(ICSSParser.BoolLiteralContext ctx);
+	void exitAdd(ICSSParser.AddContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code pixelLiteral}
 	 * labeled alternative in {@link ICSSParser#value}.
@@ -112,17 +112,29 @@ public interface ICSSListener extends ParseTreeListener {
 	 */
 	void exitPixelLiteral(ICSSParser.PixelLiteralContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code percentageLiteral}
+	 * Enter a parse tree produced by the {@code Multiply}
 	 * labeled alternative in {@link ICSSParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterPercentageLiteral(ICSSParser.PercentageLiteralContext ctx);
+	void enterMultiply(ICSSParser.MultiplyContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code percentageLiteral}
+	 * Exit a parse tree produced by the {@code Multiply}
 	 * labeled alternative in {@link ICSSParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitPercentageLiteral(ICSSParser.PercentageLiteralContext ctx);
+	void exitMultiply(ICSSParser.MultiplyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Subtract}
+	 * labeled alternative in {@link ICSSParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterSubtract(ICSSParser.SubtractContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Subtract}
+	 * labeled alternative in {@link ICSSParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitSubtract(ICSSParser.SubtractContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code scalarLiteral}
 	 * labeled alternative in {@link ICSSParser#value}.
@@ -136,17 +148,17 @@ public interface ICSSListener extends ParseTreeListener {
 	 */
 	void exitScalarLiteral(ICSSParser.ScalarLiteralContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code colorLiteral}
+	 * Enter a parse tree produced by the {@code boolLiteral}
 	 * labeled alternative in {@link ICSSParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterColorLiteral(ICSSParser.ColorLiteralContext ctx);
+	void enterBoolLiteral(ICSSParser.BoolLiteralContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code colorLiteral}
+	 * Exit a parse tree produced by the {@code boolLiteral}
 	 * labeled alternative in {@link ICSSParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitColorLiteral(ICSSParser.ColorLiteralContext ctx);
+	void exitBoolLiteral(ICSSParser.BoolLiteralContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code varParameter}
 	 * labeled alternative in {@link ICSSParser#value}.
@@ -159,6 +171,30 @@ public interface ICSSListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVarParameter(ICSSParser.VarParameterContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code percentageLiteral}
+	 * labeled alternative in {@link ICSSParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterPercentageLiteral(ICSSParser.PercentageLiteralContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code percentageLiteral}
+	 * labeled alternative in {@link ICSSParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitPercentageLiteral(ICSSParser.PercentageLiteralContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code colorLiteral}
+	 * labeled alternative in {@link ICSSParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterColorLiteral(ICSSParser.ColorLiteralContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code colorLiteral}
+	 * labeled alternative in {@link ICSSParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitColorLiteral(ICSSParser.ColorLiteralContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ICSSParser#variableReference}.
 	 * @param ctx the parse tree

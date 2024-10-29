@@ -1,5 +1,6 @@
 nl\han\ica\icss\ast\operations\AddOperation.class
 nl\han\ica\icss\ast\Stylesheet.class
+nl\han\ica\icss\parser\ICSSParser$AddContext.class
 nl\han\ica\icss\transforms\Transform.class
 nl\han\ica\icss\checker\SemanticError.class
 nl\han\ica\icss\ast\types\ExpressionType.class
@@ -22,6 +23,8 @@ nl\han\ica\icss\parser\ICSSParser$PercentageLiteralContext.class
 nl\han\ica\datastructures\HANLinkedList$ListNode.class
 nl\han\ica\icss\gui\MainGui$2.class
 nl\han\ica\icss\parser\ICSSParser$PropertyContext.class
+nl\han\ica\icss\parser\ICSSParser$MultiplyContext.class
+nl\han\ica\icss\parser\ICSSParser$SubtractContext.class
 nl\han\ica\datastructures\HANLinkedList.class
 nl\han\ica\icss\ast\ASTNode.class
 nl\han\ica\icss\ast\ElseClause.class
