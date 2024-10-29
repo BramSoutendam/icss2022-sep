@@ -60,7 +60,12 @@ public class Checker {
                     node.setError("Property: \"Width\" has been assigned an invalid type");
                 }
             } else if (node.property.name.contains("color")) {
-                if (!(node.expression instanceof ColorLiteral)) {
+                if(node.expression instanceof VariableReference){
+                    VariableReference variableReference = (VariableReference) node.expression;
+                    if(!(isVarThisType(variableReference, ExpressionType.COLOR))){
+                        node.setError("Property: \"" + node.property.name + "\" has been assigned an invalid type");
+                    }
+                } else if (!(node.expression instanceof ColorLiteral)) {
                     node.setError("Property: \"" + node.property.name + "\" has been assigned an invalid type");
                 }
             }
